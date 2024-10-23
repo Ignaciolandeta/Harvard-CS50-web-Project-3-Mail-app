@@ -1,0 +1,37 @@
+
+
+<!--First, after making and applying migrations for the project, run python manage.py runserver to start
+ the web server. Open the web server in your browser, and use the “Register” link to register for a new account. 
+ The emails you’ll be sending and receiving in this project will be entirely stored in your database 
+ (they won’t actually be sent to real email servers), so you’re welcome to choose any email address 
+ (e.g. foo@example.com) and password you’d like for this project: credentials need not be valid credentials
+  for actual email addresses. -->
+
+
+{% extends "mail/layout.html" %}
+
+{% block body %}
+
+    <h2>Register</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+{% endblock %}

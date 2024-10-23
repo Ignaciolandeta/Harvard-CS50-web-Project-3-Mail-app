@@ -1,0 +1,63 @@
+
+<!-- Once you’re signed in, you should see yourself taken to the Inbox page of the mail client. 
+ Click the buttons to navigate to your Sent and Archived mailboxes.
+ Click the “Compose” button, and you’ll be taken to a form that will let you compose a new email. 
+ Each time you click a button, though, you’re not being taken to a new route or making a new web request: 
+ instead, this entire application is just a single page, with JavaScript used to control the user interface. 
+ 
+ Template stored at mail/templates/mail/inbox.html. 
+ You’ll notice that in the body of the page, the user’s email address is first displayed in an h2 element. 
+ After that, the page has a sequence of buttons for navigating between various pages of the app. 
+ Below that, notice that this page has two main sections, each defined by a div element. 
+ The first (with an id of emails-view) contains the content of an email mailbox. 
+ The second (with an id of compose-view) contains a form where the user can compose a new email. 
+ The buttons along the top, then, need to selectively show and hide these views: the compose button, for example, 
+ should hide the emails-view and show the compose-view; 
+ the inbox button, meanwhile, should hide the compose-view and show the emails-view. 
+ How do they do that? Notice at the bottom of inbox.html, the JavaScript file mail/inbox.js is included. -->
+
+ {% extends "mail/layout.html" %}
+ {% load static %}
+ 
+ {% block body %}
+     <h2>{{ request.user.email }}</h2>
+ 
+     <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox mailbox</button>
+     <button class="btn btn-sm btn-outline-primary" id="compose">Compose new mail</button>
+     <button class="btn btn-sm btn-outline-primary" id="sent">Sent mailbox</button>
+     <button class="btn btn-sm btn-outline-primary" id="archive">Archived mailbox</button>
+     <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+     <hr>
+ 
+     <div id="single-email-view">
+         <div class="container" id="single-email-content">
+ 
+         </div>
+         <div class="container" id="single-email-back-section">
+ 
+         </div>
+     </div>
+     <div id="emails-view" class="container">
+     </div>
+ 
+     <div id="compose-view">
+         <h3>New Email</h3>
+         <form id="compose-form">
+             <div class="form-group">
+                 From: <input disabled class="form-control" value="{{ request.user.email }}">
+             </div>
+             <div class="form-group">
+                 To: <span id="to-text-error-message"></span> <input id="compose-recipients" class="form-control">
+             </div>
+             <div class="form-group">
+                 <input class="form-control" id="compose-subject" placeholder="Subject">
+             </div>
+             <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+             <input type="submit" class="btn btn-primary" id="email-submit-button"/>
+         </form>
+     </div>
+ {% endblock %}
+ 
+ {% block script %}
+     <script src="{% static 'mail/inbox.js' %}"></script>
+ {% endblock %}

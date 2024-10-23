@@ -1,0 +1,97 @@
+/* CSS styles for "mail" single page application, from <link rel="stylesheet" href="{% static 'mail/styles.css' %}">
+*/
+
+/* textarea composing new emails */
+textarea {
+    min-height: 400px; 
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+/* <h2> headings styles */
+h2  {
+    color: fuchsia;
+}
+
+/* Register link css style at 'Login.html' homepage */
+
+.register-link {
+    color: chartreuse; 
+    text-decoration: none; 
+    font-weight: bold; 
+}
+
+.register-link:hover {
+    color:#007bff; /* mouse-hover change color */
+    text-decoration: underline; /* mouse-hover underline */
+}
+
+/* buttons color on mouseHover */
+button:hover {
+    background-color: #007bff;
+    color: white; 
+}
+
+/* Button styles */
+button {
+    margin-right: 30px; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+/* Inbox mailbox Email rows (space between each email, border color and change cursor to pointer on mousehover */
+.email-line-box {
+    padding: 20px;
+    border-bottom: cornflowerblue; 
+    cursor: pointer; 
+}
+
+/* Highlight on mouse-Hover */
+.email-line-box:hover {
+    background-color: aqua; 
+}
+
+/* Header row css style */
+.header-row {
+    background-color: rgb(234, 234, 8);
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+  }
+  
+/* Individual Header section css style */
+  .header-section {
+    color: blue;  
+    font-weight: bold;
+    text-align: center;
+  }
+
+/* .css stye for 'Read' and 'unread' emails (for 'Unread' emails mark Bold text) */
+.unread {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.read {
+    background-color: darkgray;
+}
+
+
+/* single email view .css styles */
+#single-email-view {
+    padding: 25px; 
+}
+
+#single-email-back-section {
+    margin-top: 25px; 
+}
+
+/* compose view .css styles */
+#compose-view {
+    padding: 25px;
+}
+
+/* css style for Error message   */
+#to-text-error-message {
+    color: red;
+}
